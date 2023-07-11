@@ -44,7 +44,7 @@ namespace TodoApi.Controllers
         {
             if (id != todoItemDTO.Id)
             {
-                return BadRequest();
+                return Conflict();
             }
 
             var todoItem = await _context.TodoItems.FindAsync(id);

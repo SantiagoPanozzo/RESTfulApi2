@@ -19,6 +19,8 @@ namespace TodoApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
+            if (!_context.TodoItems.Any())
+                return NoContent();
             return await _context.TodoItems
                 .Select(x => ItemToDTO(x))
                 .ToListAsync();

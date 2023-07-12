@@ -26,7 +26,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=SambleDbDriver
+      - POSTGRES_DB=SampleDbDriver
     ports:
       - "5433:5432"
     restart: always

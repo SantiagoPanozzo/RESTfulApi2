@@ -1,0 +1,21 @@
+﻿version: '3.4'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  todoapi:
+    image: todoapi
+    container_name: "todoapi-services"
+    ports:
+      - "7031:7031"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:7031
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - dev
+        

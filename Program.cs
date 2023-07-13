@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataBaseContext>(opt =>
-    opt.UseNpgsql("Host=app_db;Port=5432;Database=SampleDbDriver;Username=postgres;Password=postgres;Pooling=true;"));
+    opt.UseNpgsql("Host=app_db;Port=5432;Database=basedatos;Username=usuario;Password=contra;Pooling=true;"));
 
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();

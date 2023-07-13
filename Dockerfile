@@ -1,11 +1,9 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
-WORKDIR /app
+﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 EXPOSE 7031
-
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+EXPOSE 5021
 WORKDIR /src
-COPY ["TodoApi.csproj", "./"]
-RUN dotnet restore "TodoApi.csproj"
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
 COPY . .
-WORKDIR "/src/"
-RUN dotnet build "TodoApi.csproj" -c Debug -o /app/build
+RUN dotnet restore
+CMD dotnet run --urls=http://0.0.0.0:7000
